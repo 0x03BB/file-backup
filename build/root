@@ -1,0 +1,1 @@
+05 0 * * * /root/file_backup.sh

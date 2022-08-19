@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  file-backup:
+    build: ./build
+    image: ${DOCKER_REGISTRY}file-backup:${DOCKER_TAG:-latest}
+    init: true
+    restart: unless-stopped
+    environment:
+      DATA_DIR: "${DATA_DIR:?Setting DATA_DIR is required}"
+      ROOT_FOLDER_ID: "${DRIVE_FOLDER_ID:?Setting DRIVE_FOLDER_ID is required}"
+    volumes:
+      - "data:/mnt/data"
+      - "backup:/root/backup"
+
+volumes:
+  data:
+    external: true
+    name: "${DATA_VOLUME:?Setting DATA_VOLUME is required}"
+  backup:
+    name: "${BACKUP_VOLUME:?Setting BACKUP_VOLUME is required}"
