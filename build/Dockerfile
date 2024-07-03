@@ -13,7 +13,6 @@ COPY --chmod=744 entrypoint.sh /root/entrypoint.sh
 COPY --chmod=744 file_backup.sh /root/file_backup.sh
 COPY --chmod=644 root /etc/crontabs/root
 COPY rclone.conf /root/rclone.conf
-COPY drive_key.json /root/drive_key.json
 RUN mkdir -p /root/.config/rclone
 
 # Setup the rclone configuration then run cron in the foreground.

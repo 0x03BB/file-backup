@@ -12,6 +12,9 @@ services:
     volumes:
       - "data:/mnt/data"
       - "backup:/root/backup"
+    secrets:
+      - source: drive-key
+        target: /root/drive_key.json
 
 volumes:
   data:
@@ -19,3 +22,7 @@ volumes:
     name: "${DATA_VOLUME:?}"
   backup:
     name: "${BACKUP_VOLUME:?}"
+
+secrets:
+  drive-key:
+    file: ./secrets/drive_key.json
