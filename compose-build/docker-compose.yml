@@ -1,0 +1,4 @@
+services:
+  file-backup:
+    build: ../build
+    image: ${DOCKER_REGISTRY}file-backup:${DOCKER_TAG:-latest}
